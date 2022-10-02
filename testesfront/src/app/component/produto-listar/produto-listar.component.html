@@ -1,0 +1,28 @@
+<div>
+  <table>
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Descrição</th>
+              <th>Marca</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let p of produtos">
+              <td>{{p.id}}</td>
+              <td>{{p.descricao}}</td>
+              <td>{{p.marca}}</td>
+              <td>{{p.valor}}</td>
+              <td>{{p.categoria.descricao}}</td>
+              <td>
+                  <a href="/editarProduto/{{p.id}}">Editar</a> |
+                  <button  (click)="delete(p.id)">Deletar</button>
+              </td>
+          </tr>
+         
+      </tbody>
+  </table>
+</div>

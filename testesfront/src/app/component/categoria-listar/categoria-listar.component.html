@@ -1,0 +1,24 @@
+<div>
+  <table>
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Descrição</th>
+              <th>Data Inclusão</th>
+              <th>Ações</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let c of categoria">
+              <td>{{c.id}}</td>
+              <td>{{c.descricao}}</td>
+              <td>{{c.data_inclusao}}</td>
+              <td>
+                  <a href="/editarCategoria/{{c.id}}">Editar</a> |
+                  <button  (click)="delete(c.id)">Deletar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

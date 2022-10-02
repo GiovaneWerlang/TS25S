@@ -1,0 +1,48 @@
+#app-root{
+    
+}
+
+header{
+    background-color: rgb(105, 105, 105);
+    color: #fff;
+    display: flex;
+    width: 100%;    
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.div-logo{
+    padding: 2px;
+    margin-left: 20px;
+}
+
+.logo{
+    width: 60px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li{
+    display: inline;
+    padding: 20px 30px;
+
+}
+
+a{
+    color: #fff ;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+main{
+    width: 75%;
+    background: rgb(214, 214, 214);
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px 5%;
+}
+

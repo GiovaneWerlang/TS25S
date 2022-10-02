@@ -1,0 +1,26 @@
+<div>
+  <p>Cadastro de Produtos</p>
+  <form #form="ngForm" (submit)="salvar()">
+      <div>
+          <label for="descricao">Descrição:</label>
+          <input class="campos" type="text" name="descricao" id="txt_descricao" [(ngModel)]="produto.descricao" > <br>
+      </div>
+      <div>
+          <label for="marca">Marca:</label>
+          <input class="campos" type="text" name="marca" id="txt_marca" [(ngModel)]="produto.marca" > <br>
+      </div>
+      <div>
+          <label for="valor">Valor:</label>
+          <input class="campos" type="text" name="valor" id="txt_valor" [(ngModel)]="produto.valor" > <br>
+      </div>
+      <div>
+          Categoria:<select class="campos" name="categoria" [(ngModel)]="produto.categoria">
+              <option *ngFor="let c of categoria" [ngValue]="c">{{c.descricao}}</option>
+          </select>
+      </div>
+      <!-- Categoria:<input class="campos" type="text" name="categoria" id="txt_categoria" [(ngModel)]="produto.categoria" > <br> -->
+      <input type="submit" value="salvar">
+      <button >Limpar</button>
+  </form>
+
+</div>

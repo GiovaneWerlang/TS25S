@@ -1,0 +1,30 @@
+table{
+    height: 100%;
+      width: 90%;
+      border-radius: 5px;
+      background-color: #dddddd;
+      margin: 15px auto;
+      border-collapse: collapse;
+      color: rgb(29, 29, 29);
+        }
+  thead{
+      background-color: #464646;
+      text-align: center;
+  }
+  tr, td{
+      border-collapse: collapse;
+      text-align: center;
+  }
+
+tr:hover{
+    cursor: pointer;
+    background-color: #b1b1b1 ;
+}
+a{
+    padding: 0 10px;
+
+}
+th, thead:hover{
+  cursor: default;
+  background-color: #858585 ;
+}

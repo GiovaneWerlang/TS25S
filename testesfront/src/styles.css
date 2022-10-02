@@ -1,0 +1,34 @@
+body, div, ul, header, main{
+    padding: 0;
+    margin: 0;
+    border:none;
+}
+body{
+    background: #c7c7c7;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* form{
+    text-align: right;
+    width: 58%;
+    color: #006cc4;
+} */
+
+/* .campos{
+    height: 20px;
+    width: 250px;
+    border: 1px #ccc solid;
+    margin: 3px 2px;
+    border-radius: 3px;
+} */
+
+.cor1{
+    color: #db2c56;
+}
+
+.cor2{
+    color: #9842d1;
+}
+
+
