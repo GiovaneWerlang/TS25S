@@ -47,6 +47,7 @@ form{
 
 .botoes:hover{
     background-color: #fff;
+    cursor: pointer;
 }
 
 .salvar{

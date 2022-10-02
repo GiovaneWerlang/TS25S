@@ -1,5 +1,5 @@
--- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-1');
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-2');
--- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-3');
+INSERT INTO categoria (descricao,data_inclusao) VALUES ('Salgado','01/10/2022');
+INSERT INTO categoria (descricao,data_inclusao) VALUES ('Doce','01/10/2022');
+
+INSERT INTO produto (descricao, marca, valor, categoria_id) VALUES ('Biscoito', 'Neugebauer', 5, 1);
+INSERT INTO produto (descricao, marca, valor, categoria_id) VALUES ('Tablete ', 'Neugebauer', 6, 2);
