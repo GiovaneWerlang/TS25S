@@ -2,10 +2,13 @@ package br.edu.utfpr.testes.categoria;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Set;
 
 @Path("/categoria")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -14,9 +17,13 @@ public class CategoriaResource {
 
     private CategoriaRepository repository;
 
+    private Validator validator;
+
     @Inject
-    CategoriaResource(CategoriaRepository repository){
+    CategoriaResource(CategoriaRepository repository, Validator validator){
+
         this.repository = repository;
+        this.validator = validator;
     }
 
     @GET
@@ -45,6 +52,11 @@ public class CategoriaResource {
     @Transactional
     public Response addCategoria(CategoriaDTO categoriaDTO){
 
+        Set<ConstraintViolation<CategoriaDTO>> violations = validator.validate(categoriaDTO);
+        if(!violations.isEmpty()){
+            return br.edu.utfpr.testes.erro.ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+        }
+
         Categoria categoria = new Categoria();
         categoria.setDescricao(categoriaDTO.getDescricao());
         categoria.setData_inclusao(categoriaDTO.getData_inclusao());
@@ -61,6 +73,11 @@ public class CategoriaResource {
     @Path("{id}")
     @Transactional
     public Response atualizaCategoria(@PathParam("id") Long id, CategoriaDTO categoriaDTO){
+
+        Set<ConstraintViolation<CategoriaDTO>> violations = validator.validate(categoriaDTO);
+        if(!violations.isEmpty()){
+            return br.edu.utfpr.testes.erro.ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+        }
         Categoria categoria = repository.findById(id);
         if(categoria != null){
             categoria.setDescricao(categoriaDTO.getDescricao());

@@ -1,13 +1,17 @@
 package br.edu.utfpr.testes.produto;
 
 import br.edu.utfpr.testes.categoria.CategoriaRepository;
+import br.edu.utfpr.testes.erro.ResponseError;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Set;
 
 @Path("/produto")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -17,6 +21,8 @@ public class ProdutoResource {
     private ProdutoRepository repository;
 
     private CategoriaRepository fkRepository;
+
+    private Validator validator;
 
     @Inject
     public ProdutoResource(ProdutoRepository repository, CategoriaRepository fkRepository){
@@ -49,6 +55,12 @@ public class ProdutoResource {
     @POST
     @Transactional
     public Response addProduto(ProdutoDTO produtoDTO){
+
+        Set<ConstraintViolation<ProdutoDTO>> violations = validator.validate(produtoDTO);
+        if(!violations.isEmpty()){
+            return ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+        }
+
         Produto produto = new Produto();
         produto.setDescricao(produtoDTO.getDescricao());
         produto.setMarca(produtoDTO.getMarca());
@@ -68,6 +80,12 @@ public class ProdutoResource {
     @Path("{id}")
     @Transactional
     public Response atualizaProduto(@PathParam("id") Long id, ProdutoDTO produtoDTO){
+
+        Set<ConstraintViolation<ProdutoDTO>> violations = validator.validate(produtoDTO);
+        if(!violations.isEmpty()){
+            return ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+        }
+
         Produto produto = repository.findById(id);
         if(produto != null){
 
