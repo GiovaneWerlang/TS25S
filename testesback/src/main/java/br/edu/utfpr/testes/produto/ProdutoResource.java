@@ -25,9 +25,10 @@ public class ProdutoResource {
     private Validator validator;
 
     @Inject
-    public ProdutoResource(ProdutoRepository repository, CategoriaRepository fkRepository){
+    public ProdutoResource(ProdutoRepository repository, CategoriaRepository fkRepository, Validator validator){
         this.repository = repository;
         this.fkRepository = fkRepository;
+        this.validator = validator;
     }
 
     @GET
