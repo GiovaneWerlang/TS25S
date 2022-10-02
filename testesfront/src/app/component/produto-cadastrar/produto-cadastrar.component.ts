@@ -32,10 +32,6 @@ export class ProdutoCadastrarComponent implements OnInit {
     salvar(){
       if(this.produto.id == null){
 
-        console.log(this.produto.categoria.id);
-        console.log(this.produto.categoria.descricao);
-        console.log(this.produto.categoria.data_inclusao);
-
         this.temp.id = this.produto.categoria.id;
         this.temp.descricao = this.produto.categoria.descricao;
         this.temp.data_inclusao = this.produto.categoria.data_inclusao;
@@ -45,10 +41,6 @@ export class ProdutoCadastrarComponent implements OnInit {
         });
   
       }else{
-
-        console.log(this.produto.categoria.id);
-        console.log(this.produto.categoria.descricao);
-        console.log(this.produto.categoria.data_inclusao);
 
         this.temp.id = this.produto.categoria.id;
         this.temp.descricao = this.produto.categoria.descricao;
@@ -68,7 +60,9 @@ export class ProdutoCadastrarComponent implements OnInit {
     }
   
     private carregaProduto(id:number){
-      this.produtoService.readById(id).subscribe( (produto) => this.produto = produto);
+      this.produtoService.readById(id).subscribe( (produto) => {
+        this.produto = produto;
+      });
     }
 
     carregarLista():void{

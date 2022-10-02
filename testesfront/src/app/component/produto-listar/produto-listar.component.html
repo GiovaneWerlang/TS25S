@@ -18,8 +18,8 @@
               <td>{{p.valor}}</td>
               <td>{{p.categoria.descricao}}</td>
               <td>
-                  <a href="/editarProduto/{{p.id}}">Editar</a> |
-                  <button  (click)="delete(p.id)">Deletar</button>
+                  <a href="/editarProduto/{{p.id}}" class="botoes editar">Editar</a> |
+                  <button  (click)="delete(p.id)" class="botoes deletar">Deletar</button>
               </td>
           </tr>
          

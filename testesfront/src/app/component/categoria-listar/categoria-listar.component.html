@@ -15,8 +15,8 @@
               <td>{{c.descricao}}</td>
               <td>{{c.data_inclusao}}</td>
               <td>
-                  <a href="/editarCategoria/{{c.id}}">Editar</a> |
-                  <button  (click)="delete(c.id)">Deletar</button>
+                  <a href="/editarCategoria/{{c.id}}" class="botoes editar">Editar</a> |
+                  <button  (click)="delete(c.id)" class="botoes deletar">Deletar</button>
               </td>
           </tr>
       </tbody>

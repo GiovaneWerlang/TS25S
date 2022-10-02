@@ -3,31 +3,57 @@ body, div, ul, header, main{
     margin: 0;
     border:none;
 }
+
 body{
     background: #c7c7c7;
     font-family: 'Roboto', sans-serif;
 }
 
-
-/* form{
-    text-align: right;
-    width: 58%;
-    color: #006cc4;
-} */
-
-/* .campos{
-    height: 20px;
-    width: 250px;
-    border: 1px #ccc solid;
-    margin: 3px 2px;
-    border-radius: 3px;
-} */
-
-.cor1{
+.titulo{
+    text-align: center;
     color: #db2c56;
 }
 
-.cor2{
+form{
+    text-align: right;
+    width: 58%;
+    color: #db2c56;
+} 
+
+.campos{
+    height: 20px;
+    width: 250px;
+    border: 1px #ccc solid;
+    margin: 5px 5px;
+    border-radius: 3px;
+}
+
+.campos:hover{
+    border: 1px #db2c56 solid;
+}
+
+.campos:focus{
+    outline: none !important;
+    border:1px #db2c56 solid;
+    box-shadow: 0 0 2px #db2c56;
+}
+
+.botoes{
+    border: solid 1px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    margin: 5px;
+}
+
+.botoes:hover{
+    background-color: #fff;
+}
+
+.salvar{
+    color: #db2c56;
+}
+
+.limpar{
     color: #9842d1;
 }
 
