@@ -59,7 +59,9 @@ public class ProdutoResource {
 
         Set<ConstraintViolation<ProdutoDTO>> violations = validator.validate(produtoDTO);
         if(!violations.isEmpty()){
-            return ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+            ResponseError responseError = ResponseError.createFromViolations(violations);
+            Response response = responseError.returnWithStatusCode(422);
+            return response;
         }
 
         Produto produto = new Produto();
@@ -68,13 +70,20 @@ public class ProdutoResource {
         produto.setValor(produtoDTO.getValor());
 
         if(fkRepository.findById(produtoDTO.getCategoria().getId()) == null){
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            Response response =  Response.status(Response.Status.BAD_REQUEST).build();
+            return response;
         }
 
         produto.setCategoria(fkRepository.findById(produtoDTO.getCategoria().getId()));
-        repository.persist(produto);
+        try{
+            repository.persist(produto);
+        }catch (Exception ex){
+            Response response =  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return response;
+        }
 
-        return Response.status( Response.Status.CREATED.getStatusCode(),produto.toString()).build();
+        Response response =  Response.status( Response.Status.CREATED.getStatusCode(),produto.toString()).build();
+        return response;
     }
 
     @PUT
