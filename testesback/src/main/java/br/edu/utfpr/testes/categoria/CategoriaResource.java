@@ -1,5 +1,7 @@
 package br.edu.utfpr.testes.categoria;
 
+import br.edu.utfpr.testes.erro.ResponseError;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
@@ -54,7 +56,9 @@ public class CategoriaResource {
 
         Set<ConstraintViolation<CategoriaDTO>> violations = validator.validate(categoriaDTO);
         if(!violations.isEmpty()){
-            return br.edu.utfpr.testes.erro.ResponseError.createFromViolations(violations).returnWithStatusCode(422);
+            ResponseError responseError = ResponseError.createFromViolations(violations);
+            Response response = responseError.returnWithStatusCode(422);
+            return response;
         }
 
         Categoria categoria = new Categoria();
@@ -64,9 +68,11 @@ public class CategoriaResource {
         try {
             repository.persist(categoria);
         }catch (Exception ex){
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            Response response =  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return response;
         }
-        return Response.status( Response.Status.CREATED.getStatusCode(),categoria.toString()).build();
+        Response response =  Response.status( Response.Status.CREATED.getStatusCode(),categoria.toString()).build();
+        return response;
     }
 
     @PUT
